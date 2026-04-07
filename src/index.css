@@ -70,14 +70,36 @@ body {
   max-width: 480px;
   margin: 0 auto;
   min-height: 100dvh;
-  background: var(--surface);
+  background: rgba(255, 255, 255, 0.55);
   position: relative;
+  overflow: hidden;
+}
+
+@media (prefers-color-scheme: dark) {
+  .app {
+    background: rgba(15, 23, 42, 0.6);
+  }
+}
+
+/* Particle Canvas */
+.particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  height: 100dvh;
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* Page Layout */
 .page {
   padding: 1rem 1rem 6rem;
   min-height: 100dvh;
+  position: relative;
+  z-index: 1;
 }
 
 .page-with-nav {
@@ -236,12 +258,16 @@ body {
 
 /* Total Card */
 .total-card {
-  background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(37, 99, 235, 0.95));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: white;
   border-radius: var(--radius);
   padding: 1.5rem;
   margin-bottom: 1.25rem;
   text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.25);
 }
 
 .total-label {
@@ -290,12 +316,21 @@ body {
 
 /* Chart Card */
 .chart-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: var(--radius);
   padding: 1rem;
   margin-bottom: 1rem;
   box-shadow: var(--shadow);
+}
+
+@media (prefers-color-scheme: dark) {
+  .chart-card {
+    background: rgba(30, 41, 59, 0.75);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
 }
 
 .chart-card h2 {
@@ -368,13 +403,27 @@ body {
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem;
-  background: var(--surface-alt);
+  background: rgba(249, 250, 251, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-radius: var(--radius-sm);
-  transition: background 0.15s;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.15s;
 }
 
 .expense-row:active {
-  background: var(--gray-100);
+  background: rgba(243, 244, 246, 0.9);
+  transform: scale(0.99);
+}
+
+@media (prefers-color-scheme: dark) {
+  .expense-row {
+    background: rgba(30, 41, 59, 0.6);
+    border-color: rgba(255, 255, 255, 0.06);
+  }
+  .expense-row:active {
+    background: rgba(51, 65, 85, 0.8);
+  }
 }
 
 .expense-icon {
@@ -490,10 +539,19 @@ body {
   width: 100%;
   max-width: 480px;
   display: flex;
-  background: var(--surface);
-  border-top: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
   z-index: 20;
   padding-bottom: env(safe-area-inset-bottom);
+}
+
+@media (prefers-color-scheme: dark) {
+  .bottom-nav {
+    background: rgba(15, 23, 42, 0.85);
+    border-top-color: rgba(255, 255, 255, 0.08);
+  }
 }
 
 .nav-item {
@@ -740,8 +798,18 @@ body {
 
 .budget-card {
   padding: 0.75rem;
-  background: var(--surface-alt);
+  background: rgba(249, 250, 251, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: var(--radius-sm);
+}
+
+@media (prefers-color-scheme: dark) {
+  .budget-card {
+    background: rgba(30, 41, 59, 0.6);
+    border-color: rgba(255, 255, 255, 0.06);
+  }
 }
 
 .budget-header {

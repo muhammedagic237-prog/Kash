@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SplashScreen from "./components/SplashScreen";
+import ParticleBackground from "./components/ParticleBackground";
 import Dashboard from "./pages/Dashboard";
 import AddExpense from "./pages/AddExpense";
 import EditExpense from "./pages/EditExpense";
@@ -20,6 +21,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <div className="app">
+        <ParticleBackground />
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/add" element={<AddExpense />} />
