@@ -1,8 +1,9 @@
 import { useState, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ArrowLeft, Trash2, Search, Download } from "lucide-react";
+import { ArrowLeft, Trash2, Pencil, Search, Download } from "lucide-react";
 import { useExpenses } from "../hooks/useExpenses";
 import { storage } from "../services/storage";
+import BottomNav from "../components/BottomNav";
 
 export default function History() {
   const navigate = useNavigate();
@@ -135,8 +136,16 @@ export default function History() {
                         </span>
                       </div>
                       <button
+                        className="icon-btn small"
+                        onClick={() => navigate(`/edit/${expense.id}`)}
+                        title="Edit"
+                      >
+                        <Pencil size={14} />
+                      </button>
+                      <button
                         className="icon-btn danger small"
                         onClick={() => deleteExpense(expense.id)}
+                        title="Delete"
                       >
                         <Trash2 size={14} />
                       </button>
@@ -149,24 +158,7 @@ export default function History() {
         </div>
       )}
 
-      <nav className="bottom-nav">
-        <Link to="/" className="nav-item">
-          <span className="nav-icon">📊</span>
-          <span>Dashboard</span>
-        </Link>
-        <Link to="/history" className="nav-item active">
-          <span className="nav-icon">📋</span>
-          <span>History</span>
-        </Link>
-        <Link to="/budgets" className="nav-item">
-          <span className="nav-icon">🎯</span>
-          <span>Budgets</span>
-        </Link>
-        <Link to="/settings" className="nav-item">
-          <span className="nav-icon">⚙️</span>
-          <span>Settings</span>
-        </Link>
-      </nav>
+      <BottomNav />
     </div>
   );
 }

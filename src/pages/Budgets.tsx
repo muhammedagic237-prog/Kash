@@ -1,7 +1,8 @@
 import { useState, useMemo } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { useExpenses } from "../hooks/useExpenses";
+import BottomNav from "../components/BottomNav";
 
 export default function Budgets() {
   const navigate = useNavigate();
@@ -145,24 +146,7 @@ export default function Budgets() {
         })}
       </div>
 
-      <nav className="bottom-nav">
-        <Link to="/" className="nav-item">
-          <span className="nav-icon">📊</span>
-          <span>Dashboard</span>
-        </Link>
-        <Link to="/history" className="nav-item">
-          <span className="nav-icon">📋</span>
-          <span>History</span>
-        </Link>
-        <Link to="/budgets" className="nav-item active">
-          <span className="nav-icon">🎯</span>
-          <span>Budgets</span>
-        </Link>
-        <Link to="/settings" className="nav-item">
-          <span className="nav-icon">⚙️</span>
-          <span>Settings</span>
-        </Link>
-      </nav>
+      <BottomNav />
     </div>
   );
 }

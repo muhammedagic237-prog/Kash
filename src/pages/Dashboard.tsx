@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { Plus, Settings, ChevronLeft, ChevronRight } from "lucide-react";
+import { Plus, ChevronLeft, ChevronRight } from "lucide-react";
 import {
   PieChart,
   Pie,
@@ -13,6 +13,7 @@ import {
   Tooltip,
 } from "recharts";
 import { useExpenses } from "../hooks/useExpenses";
+import BottomNav from "../components/BottomNav";
 
 const MONTHS = [
   "January", "February", "March", "April", "May", "June",
@@ -79,9 +80,7 @@ export default function Dashboard() {
     <div className="page">
       <header className="page-header">
         <h1>Kash</h1>
-        <Link to="/settings" className="icon-btn" title="Settings">
-          <Settings size={20} />
-        </Link>
+        <div style={{ width: 36 }} />
       </header>
 
       {/* Month Selector */}
@@ -249,25 +248,7 @@ export default function Dashboard() {
         <Plus size={28} />
       </Link>
 
-      {/* Bottom Nav */}
-      <nav className="bottom-nav">
-        <Link to="/" className="nav-item active">
-          <span className="nav-icon">📊</span>
-          <span>Dashboard</span>
-        </Link>
-        <Link to="/history" className="nav-item">
-          <span className="nav-icon">📋</span>
-          <span>History</span>
-        </Link>
-        <Link to="/budgets" className="nav-item">
-          <span className="nav-icon">🎯</span>
-          <span>Budgets</span>
-        </Link>
-        <Link to="/settings" className="nav-item">
-          <span className="nav-icon">⚙️</span>
-          <span>Settings</span>
-        </Link>
-      </nav>
+      <BottomNav />
     </div>
   );
 }

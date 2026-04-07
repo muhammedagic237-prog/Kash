@@ -25,6 +25,13 @@ export const storage = {
     this.saveExpenses(expenses);
   },
 
+  updateExpense(updated: Expense) {
+    const expenses = this.getExpenses().map((e) =>
+      e.id === updated.id ? updated : e
+    );
+    this.saveExpenses(expenses);
+  },
+
   deleteExpense(id: string) {
     const expenses = this.getExpenses().filter((e) => e.id !== id);
     this.saveExpenses(expenses);

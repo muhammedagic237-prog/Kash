@@ -32,6 +32,14 @@ export function useExpenses() {
     [refresh]
   );
 
+  const updateExpense = useCallback(
+    (updated: Expense) => {
+      storage.updateExpense(updated);
+      refresh();
+    },
+    [refresh]
+  );
+
   const deleteExpense = useCallback(
     (id: string) => {
       storage.deleteExpense(id);
@@ -105,6 +113,7 @@ export function useExpenses() {
     currency,
     monthTotal,
     addExpense,
+    updateExpense,
     deleteExpense,
     setCurrency,
     saveBudgets,

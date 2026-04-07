@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Download, Trash2 } from "lucide-react";
 import { useExpenses } from "../hooks/useExpenses";
 import { storage } from "../services/storage";
+import BottomNav from "../components/BottomNav";
 
 const CURRENCIES = [
   "BAM", "EUR", "USD", "GBP", "CHF", "CAD", "AUD",
@@ -109,24 +110,7 @@ export default function SettingsPage() {
         </section>
       </div>
 
-      <nav className="bottom-nav">
-        <Link to="/" className="nav-item">
-          <span className="nav-icon">📊</span>
-          <span>Dashboard</span>
-        </Link>
-        <Link to="/history" className="nav-item">
-          <span className="nav-icon">📋</span>
-          <span>History</span>
-        </Link>
-        <Link to="/budgets" className="nav-item">
-          <span className="nav-icon">🎯</span>
-          <span>Budgets</span>
-        </Link>
-        <Link to="/settings" className="nav-item active">
-          <span className="nav-icon">⚙️</span>
-          <span>Settings</span>
-        </Link>
-      </nav>
+      <BottomNav />
     </div>
   );
 }
